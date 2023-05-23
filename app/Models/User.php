@@ -3,6 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use Attribute;
+use Faker\Guesser\Name;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -41,4 +44,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // public function name(): Attribute
+    // {
+    //     return new Attribute(
+    //         get: fn ($value) => strtoupper($value),
+    //         set: fn ($value) => $value,
+    //     );
+    // }
 }

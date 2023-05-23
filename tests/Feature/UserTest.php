@@ -42,5 +42,20 @@ class UserTest extends TestCase
     }
 
     // test whether user can access dashboard
-    
+    public function test_auth_user_can_access_dashboard(){
+
+        // initiate data
+        $user = User::factory()->create();
+
+        $user_response = $this->actingAs($user)->get('/dashboard');
+        $user_response->assertStatus(200);
+    }
+
+    // test for unauthorized user cannot acces dashboard
+    public function test_unauth_user_cannot_access_dashboard()
+    {
+        $response = $this->get('/dashboard');
+        $response->assertStatus(302);  
+        $response->assertRedirect('/login');
+    }
 }
